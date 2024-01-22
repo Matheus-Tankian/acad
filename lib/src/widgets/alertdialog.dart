@@ -1,0 +1,62 @@
+import 'package:flutter/material.dart';
+import 'package:sipaealuno/src/app.dart';
+import 'package:sipaealuno/src/core/app_colors.dart';
+import 'package:sipaealuno/src/core/app_fonts.dart';
+
+Future<void> alertMessage(
+  BuildContext context,
+  Function() onPressed,
+) async {
+  return showDialog<void>(
+    context: navigationApp.currentContext!,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Confirmar Saída'),
+        content: const Text('Você realmente deseja sair?'),
+        actions: <Widget>[
+          button(
+            name: 'Cancelar',
+            color: AppColors.red,
+            onTap: () {
+              Navigator.of(navigationApp.currentContext!, rootNavigator: true)
+                  .pop();
+            },
+          ),
+          button(
+            name: 'Sair',
+            color: AppColors.blue,
+            onTap: onPressed,
+            padding: const EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: 30,
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+Widget button(
+    {required String name,
+    required Color color,
+    Function()? onTap,
+    EdgeInsetsGeometry? padding}) {
+  return InkWell(
+    onTap: onTap,
+    child: Container(
+      padding: padding ??
+          const EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 8,
+          ),
+      decoration: BoxDecoration(
+          color: color,
+          borderRadius: const BorderRadius.all(Radius.circular(6))),
+      child: Text(
+        name,
+        style: AppFonts.text14Semibold.copyWith(color: AppColors.white),
+      ),
+    ),
+  );
+}
