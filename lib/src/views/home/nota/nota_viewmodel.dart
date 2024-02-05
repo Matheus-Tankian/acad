@@ -1,12 +1,12 @@
 import 'dart:developer';
 
+import 'package:acad/src/models/Escola/escola_model.dart';
+import 'package:acad/src/models/materia/materia_model.dart';
+import 'package:acad/src/models/turma/turma_model.dart';
+import 'package:acad/src/repository/escola/escola_repository.dart';
+import 'package:acad/src/repository/materia/materia_repository.dart';
+import 'package:acad/src/repository/turma/turma_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:sipaealuno/src/models/Escola/escola_model.dart';
-import 'package:sipaealuno/src/models/materia/materia_model.dart';
-import 'package:sipaealuno/src/models/turma/turma_model.dart';
-import 'package:sipaealuno/src/repository/escola/escola_repository.dart';
-import 'package:sipaealuno/src/repository/materia/materia_repository.dart';
-import 'package:sipaealuno/src/repository/turma/turma_repository.dart';
 
 class NotaViewModel extends ChangeNotifier {
   final TurmaReposity _turmaReposity;

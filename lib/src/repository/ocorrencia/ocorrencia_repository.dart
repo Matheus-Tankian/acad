@@ -1,5 +1,5 @@
-import 'package:sipaealuno/src/models/ocorrencia/ocorrencia_model.dart';
-import 'package:sipaealuno/src/services/mocks/ocorrencia_mock.dart';
+import 'package:acad/src/models/ocorrencia/ocorrencia_model.dart';
+import 'package:acad/src/services/mocks/ocorrencia_mock.dart';
 
 abstract class OcorrenciaReposity {
   Future<List<OcorrenciaModel>> getAllOcorrencias();

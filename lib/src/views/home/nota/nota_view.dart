@@ -1,13 +1,14 @@
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/core/app_fonts.dart';
+import 'package:acad/src/repository/escola/escola_repository.dart';
+import 'package:acad/src/repository/materia/materia_repository.dart';
+import 'package:acad/src/repository/turma/turma_repository.dart';
+import 'package:acad/src/views/home/nota/nota_viewmodel.dart';
+import 'package:acad/src/widgets/default_dropdown_widget.dart';
+import 'package:acad/src/widgets/matter_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/core/app_fonts.dart';
-import 'package:sipaealuno/src/repository/escola/escola_repository.dart';
-import 'package:sipaealuno/src/repository/materia/materia_repository.dart';
-import 'package:sipaealuno/src/repository/turma/turma_repository.dart';
-import 'package:sipaealuno/src/views/home/nota/nota_viewmodel.dart';
-import 'package:sipaealuno/src/widgets/default_dropdown_widget.dart';
-import 'package:sipaealuno/src/widgets/matter_widget.dart';
+
 
 class NotaView extends StatelessWidget {
   const NotaView({super.key});

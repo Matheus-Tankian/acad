@@ -1,10 +1,11 @@
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/repository/noticia/noticia_repository.dart';
+import 'package:acad/src/views/home/noticia/noticia_viewmodel.dart';
+import 'package:acad/src/widgets/card_new_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/repository/noticia/noticia_repository.dart';
-import 'package:sipaealuno/src/views/home/noticia/noticia_viewmodel.dart';
-import 'package:sipaealuno/src/widgets/card_new_widget.dart';
+
 
 class NoticiaView extends StatelessWidget {
   final int indexSelected;

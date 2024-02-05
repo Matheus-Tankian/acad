@@ -1,7 +1,7 @@
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/core/app_fonts.dart';
+import 'package:acad/src/widgets/tag_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/core/app_fonts.dart';
-import 'package:sipaealuno/src/widgets/tag_widget.dart';
 
 class NewsWidgets extends StatelessWidget {
   final EdgeInsets? padding;

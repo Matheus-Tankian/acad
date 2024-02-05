@@ -1,19 +1,20 @@
+import 'package:acad/src/app.dart';
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/core/app_fonts.dart';
+import 'package:acad/src/core/app_icons.dart';
+import 'package:acad/src/repository/horario.dart/horario_repository.dart';
+import 'package:acad/src/repository/noticia/noticia_repository.dart';
+import 'package:acad/src/repository/perfil/perfil_repository.dart';
+import 'package:acad/src/views/home/home_viewmodel.dart';
+import 'package:acad/src/views/home/noticia/noticia_view.dart';
+import 'package:acad/src/widgets/alertdialog.dart';
+import 'package:acad/src/widgets/horario_widget.dart';
+import 'package:acad/src/widgets/news_widget.dart';
+import 'package:acad/src/widgets/perfil_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:sipaealuno/src/app.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/core/app_fonts.dart';
-import 'package:sipaealuno/src/core/app_icons.dart';
-import 'package:sipaealuno/src/repository/horario.dart/horario_repository.dart';
-import 'package:sipaealuno/src/repository/noticia/noticia_repository.dart';
-import 'package:sipaealuno/src/repository/perfil/perfil_repository.dart';
-import 'package:sipaealuno/src/views/home/home_viewmodel.dart';
-import 'package:sipaealuno/src/views/home/noticia/noticia_view.dart';
-import 'package:sipaealuno/src/widgets/alertdialog.dart';
-import 'package:sipaealuno/src/widgets/horario_widget.dart';
-import 'package:sipaealuno/src/widgets/news_widget.dart';
-import 'package:sipaealuno/src/widgets/perfil_widget.dart';
+
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

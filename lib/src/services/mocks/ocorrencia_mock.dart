@@ -1,4 +1,4 @@
-import 'package:sipaealuno/src/models/ocorrencia/ocorrencia_model.dart';
+import 'package:acad/src/models/ocorrencia/ocorrencia_model.dart';
 
 final List<OcorrenciaModel> ocorreciaMock = [
   OcorrenciaModel(

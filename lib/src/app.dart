@@ -1,14 +1,15 @@
 import 'dart:developer';
 
+import 'package:acad/src/core/app_routes.dart';
+import 'package:acad/src/core/app_thema.dart';
+import 'package:acad/src/models/auth/auth_response_model.dart';
+import 'package:acad/src/screens/home/home_screen.dart';
+import 'package:acad/src/screens/login/login_screen.dart';
+import 'package:acad/src/utils/cache_repository.dart';
+import 'package:acad/src/utils/hive_box.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:sipaealuno/src/core/app_routes.dart';
-import 'package:sipaealuno/src/core/app_thema.dart';
-import 'package:sipaealuno/src/models/auth/auth_response_model.dart';
-import 'package:sipaealuno/src/screens/home/home_screen.dart';
-import 'package:sipaealuno/src/screens/login/login_screen.dart';
-import 'package:sipaealuno/src/utils/cache_repository.dart';
-import 'package:sipaealuno/src/utils/hive_box.dart';
+
 
 final navigationApp = GlobalKey<NavigatorState>(debugLabel: "navigationApp");
 final navigationScreen =

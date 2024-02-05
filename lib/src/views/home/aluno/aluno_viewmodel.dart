@@ -1,8 +1,8 @@
 import 'dart:developer';
 
+import 'package:acad/src/models/perfil/perfil_model.dart';
+import 'package:acad/src/repository/perfil/perfil_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:sipaealuno/src/models/perfil/perfil_model.dart';
-import 'package:sipaealuno/src/repository/perfil/perfil_repository.dart';
 
 class AlunoViewModel extends ChangeNotifier {
   final PerfilReposity _perfilReposity;

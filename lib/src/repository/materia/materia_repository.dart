@@ -1,5 +1,5 @@
-import 'package:sipaealuno/src/models/materia/materia_model.dart';
-import 'package:sipaealuno/src/services/mocks/materia_mock.dart';
+import 'package:acad/src/models/materia/materia_model.dart';
+import 'package:acad/src/services/mocks/materia_mock.dart';
 
 abstract class MateriaReposity {
   Future<AlunoNotaModel> getAllMaterias(int idEscola, int idTurma);

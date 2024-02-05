@@ -1,8 +1,9 @@
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/core/app_fonts.dart';
+import 'package:acad/src/widgets/ocorrence_card_widget.dart';
+import 'package:acad/src/widgets/organize_ocurrence_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/core/app_fonts.dart';
-import 'package:sipaealuno/src/widgets/ocorrence_card_widget.dart';
-import 'package:sipaealuno/src/widgets/organize_ocurrence_widget.dart';
+
 
 class Occurrence extends StatelessWidget {
   const Occurrence({super.key});

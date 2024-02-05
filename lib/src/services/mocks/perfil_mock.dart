@@ -1,4 +1,4 @@
-import 'package:sipaealuno/src/models/perfil/perfil_model.dart';
+import 'package:acad/src/models/perfil/perfil_model.dart';
 
 final PerfilModel perfilMock = PerfilModel(
   userName: 'José Batore Vieira',

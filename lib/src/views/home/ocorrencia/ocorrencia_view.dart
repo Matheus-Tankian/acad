@@ -1,10 +1,10 @@
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/core/app_fonts.dart';
+import 'package:acad/src/repository/ocorrencia/ocorrencia_repository.dart';
+import 'package:acad/src/views/home/ocorrencia/ocorrencia_viewmodel.dart';
+import 'package:acad/src/widgets/ocorrence_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/core/app_fonts.dart';
-import 'package:sipaealuno/src/repository/ocorrencia/ocorrencia_repository.dart';
-import 'package:sipaealuno/src/views/home/ocorrencia/ocorrencia_viewmodel.dart';
-import 'package:sipaealuno/src/widgets/ocorrence_card_widget.dart';
 
 class OcorrenciaView extends StatelessWidget {
   const OcorrenciaView({super.key});

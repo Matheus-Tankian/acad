@@ -1,5 +1,5 @@
+import 'package:acad/src/views/login/login_view.dart';
 import 'package:flutter/material.dart';
-import 'package:sipaealuno/src/views/login/login_view.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

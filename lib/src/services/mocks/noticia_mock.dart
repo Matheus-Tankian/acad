@@ -1,5 +1,5 @@
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/models/noticia/noticia_model.dart';
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/models/noticia/noticia_model.dart';
 
 final List<NoticiaModel> noticiasMock = [
   NoticiaModel(

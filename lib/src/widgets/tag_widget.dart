@@ -1,5 +1,6 @@
+import 'package:acad/src/core/app_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:sipaealuno/src/core/app_fonts.dart';
+
 
 class TagWidget extends StatelessWidget {
   final Color backgroundColor;

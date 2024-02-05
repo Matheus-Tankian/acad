@@ -1,4 +1,4 @@
-import 'package:sipaealuno/src/models/turma/turma_model.dart';
+import 'package:acad/src/models/turma/turma_model.dart';
 
 final List<TurmaModel> turmasMock = [
   TurmaModel(

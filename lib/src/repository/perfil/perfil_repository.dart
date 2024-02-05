@@ -1,5 +1,5 @@
-import 'package:sipaealuno/src/models/perfil/perfil_model.dart';
-import 'package:sipaealuno/src/services/mocks/perfil_mock.dart';
+import 'package:acad/src/models/perfil/perfil_model.dart';
+import 'package:acad/src/services/mocks/perfil_mock.dart';
 
 abstract class PerfilReposity {
   Future<PerfilModel> getPerfil();

@@ -1,9 +1,10 @@
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/core/app_fonts.dart';
+import 'package:acad/src/views/home/aluno/new_password/new_password_view.dart';
+import 'package:acad/src/widgets/button_widget.dart';
+import 'package:acad/src/widgets/perfil_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/core/app_fonts.dart';
-import 'package:sipaealuno/src/views/home/aluno/new_password/new_password_view.dart';
-import 'package:sipaealuno/src/widgets/button_widget.dart';
-import 'package:sipaealuno/src/widgets/perfil_widget.dart';
+
 
 class UserProfile extends StatelessWidget {
   final String nome;

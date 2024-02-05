@@ -1,5 +1,5 @@
-import 'package:sipaealuno/src/models/Escola/escola_model.dart';
-import 'package:sipaealuno/src/services/mocks/escola_mock.dart';
+import 'package:acad/src/models/Escola/escola_model.dart';
+import 'package:acad/src/services/mocks/escola_mock.dart';
 
 abstract class EscolaReposity {
   Future<List<EscolaModel>> getAllEscolas();

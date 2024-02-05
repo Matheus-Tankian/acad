@@ -1,4 +1,4 @@
-import 'package:sipaealuno/src/models/horario/horario_model.dart';
+import 'package:acad/src/models/horario/horario_model.dart';
 
 final List<DiaModel> diasMock = [
   DiaModel(

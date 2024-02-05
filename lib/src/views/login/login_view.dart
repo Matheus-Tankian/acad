@@ -1,14 +1,15 @@
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/core/app_fonts.dart';
+import 'package:acad/src/core/app_images.dart';
+import 'package:acad/src/repository/auth/auth_repository.dart';
+import 'package:acad/src/repository/city/city_repository.dart';
+import 'package:acad/src/views/login/login_viewmodel.dart';
+import 'package:acad/src/widgets/button_widget.dart';
+import 'package:acad/src/widgets/default_dropdown_widget.dart';
+import 'package:acad/src/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/core/app_fonts.dart';
-import 'package:sipaealuno/src/core/app_images.dart';
-import 'package:sipaealuno/src/repository/auth/auth_repository.dart';
-import 'package:sipaealuno/src/repository/city/city_repository.dart';
-import 'package:sipaealuno/src/views/login/login_viewmodel.dart';
-import 'package:sipaealuno/src/widgets/button_widget.dart';
-import 'package:sipaealuno/src/widgets/default_dropdown_widget.dart';
-import 'package:sipaealuno/src/widgets/textfield_widget.dart';
+
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

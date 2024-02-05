@@ -1,8 +1,8 @@
 import 'dart:convert';
 
+import 'package:acad/src/models/city/city_model.dart';
+import 'package:acad/src/utils/api_urls.dart';
 import 'package:http/http.dart' as http;
-import 'package:sipaealuno/src/models/city/city_model.dart';
-import 'package:sipaealuno/src/utils/api_urls.dart';
 
 abstract class CityReposity {
   Future<List<CityModel>> getAllCities();

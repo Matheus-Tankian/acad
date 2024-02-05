@@ -1,11 +1,11 @@
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/core/app_fonts.dart';
+import 'package:acad/src/repository/nova_senha/nova_senha_repository.dart';
+import 'package:acad/src/views/home/aluno/new_password/new_password_viewmodel.dart';
+import 'package:acad/src/widgets/textfield_widget.dart';
+import 'package:acad/src/widgets/user_profile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/core/app_fonts.dart';
-import 'package:sipaealuno/src/repository/nova_senha/nova_senha_repository.dart';
-import 'package:sipaealuno/src/views/home/aluno/new_password/new_password_viewmodel.dart';
-import 'package:sipaealuno/src/widgets/textfield_widget.dart';
-import 'package:sipaealuno/src/widgets/user_profile_widget.dart';
 
 class NewPasswordView extends StatefulWidget {
   final String nome;

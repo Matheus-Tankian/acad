@@ -1,4 +1,6 @@
-import 'package:sipaealuno/src/models/materia/materia_model.dart';
+
+
+import 'package:acad/src/models/materia/materia_model.dart';
 
 Map<String, AlunoNotaModel> alunoNotaMock = {
   '0-0': alunoNotaMock1,

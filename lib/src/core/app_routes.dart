@@ -1,7 +1,7 @@
+import 'package:acad/src/app.dart';
+import 'package:acad/src/screens/home/home_screen.dart';
+import 'package:acad/src/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:sipaealuno/src/app.dart';
-import 'package:sipaealuno/src/screens/home/home_screen.dart';
-import 'package:sipaealuno/src/screens/login/login_screen.dart';
 
 class AppRoutes {
   AppRoutes._();

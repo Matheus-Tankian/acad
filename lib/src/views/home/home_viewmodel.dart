@@ -1,16 +1,17 @@
 import 'dart:developer';
 
+import 'package:acad/src/app.dart';
+import 'package:acad/src/models/horario/horario_model.dart';
+import 'package:acad/src/models/noticia/noticia_model.dart';
+import 'package:acad/src/models/perfil/perfil_model.dart';
+import 'package:acad/src/repository/horario.dart/horario_repository.dart';
+import 'package:acad/src/repository/noticia/noticia_repository.dart';
+import 'package:acad/src/repository/perfil/perfil_repository.dart';
+import 'package:acad/src/utils/cache_repository.dart';
+import 'package:acad/src/utils/hive_box.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:sipaealuno/src/app.dart';
-import 'package:sipaealuno/src/models/horario/horario_model.dart';
-import 'package:sipaealuno/src/models/noticia/noticia_model.dart';
-import 'package:sipaealuno/src/models/perfil/perfil_model.dart';
-import 'package:sipaealuno/src/repository/horario.dart/horario_repository.dart';
-import 'package:sipaealuno/src/repository/noticia/noticia_repository.dart';
-import 'package:sipaealuno/src/repository/perfil/perfil_repository.dart';
-import 'package:sipaealuno/src/utils/cache_repository.dart';
-import 'package:sipaealuno/src/utils/hive_box.dart';
+
 
 class HomeViewModel extends ChangeNotifier {
   final NoticiaReposity _noticiaReposity;

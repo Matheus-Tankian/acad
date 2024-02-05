@@ -1,7 +1,7 @@
-import 'package:sipaealuno/src/models/auth/auth_request_model.dart';
-import 'package:sipaealuno/src/models/auth/auth_response_model.dart';
-import 'package:sipaealuno/src/services/http/api_base.dart';
-import 'package:sipaealuno/src/utils/api_urls.dart';
+import 'package:acad/src/models/auth/auth_request_model.dart';
+import 'package:acad/src/models/auth/auth_response_model.dart';
+import 'package:acad/src/services/http/api_base.dart';
+import 'package:acad/src/utils/api_urls.dart';
 
 abstract class AuthRepository {
   Future<AuthResponseModel> authenticate(

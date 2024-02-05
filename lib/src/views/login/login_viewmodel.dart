@@ -1,17 +1,19 @@
 import 'dart:developer';
 
+import 'package:acad/src/app.dart';
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/models/auth/auth_request_model.dart';
+import 'package:acad/src/models/city/city_model.dart';
+import 'package:acad/src/repository/auth/auth_repository.dart';
+import 'package:acad/src/repository/city/city_repository.dart';
+import 'package:acad/src/utils/hive_box.dart';
+import 'package:acad/src/widgets/snack_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:sipaealuno/src/app.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/models/auth/auth_request_model.dart';
-import 'package:sipaealuno/src/models/city/city_model.dart';
-import 'package:sipaealuno/src/repository/auth/auth_repository.dart';
-import 'package:sipaealuno/src/repository/city/city_repository.dart';
-import 'package:sipaealuno/src/utils/api_urls.dart';
-import 'package:sipaealuno/src/utils/hive_box.dart';
-import 'package:sipaealuno/src/widgets/snack_bar_widget.dart';
+
+import '../../utils/api_urls.dart';
+
 
 class LoginViewModel extends ChangeNotifier {
   final AuthRepository _authRepository;

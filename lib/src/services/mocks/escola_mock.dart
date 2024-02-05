@@ -1,4 +1,4 @@
-import 'package:sipaealuno/src/models/Escola/escola_model.dart';
+import 'package:acad/src/models/Escola/escola_model.dart';
 
 final List<EscolaModel> escolasMock = [
   EscolaModel(

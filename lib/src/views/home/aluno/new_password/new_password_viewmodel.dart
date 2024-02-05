@@ -1,9 +1,10 @@
+import 'package:acad/src/app.dart';
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/models/nova_senha/nova_senha_model.dart';
+import 'package:acad/src/repository/nova_senha/nova_senha_repository.dart';
+import 'package:acad/src/widgets/snack_bar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:sipaealuno/src/app.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/models/nova_senha/nova_senha_model.dart';
-import 'package:sipaealuno/src/repository/nova_senha/nova_senha_repository.dart';
-import 'package:sipaealuno/src/widgets/snack_bar_widget.dart';
+
 
 class NewPasswordViewModel extends ChangeNotifier {
   final NovaSenhaReposity _novaSenhaReposity;

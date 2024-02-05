@@ -2,12 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:acad/src/models/auth/auth_response_model.dart';
+import 'package:acad/src/services/http/api_exceptions.dart';
+import 'package:acad/src/utils/cache_repository.dart';
+import 'package:acad/src/utils/hive_box.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
-import 'package:sipaealuno/src/models/auth/auth_response_model.dart';
-import 'package:sipaealuno/src/services/http/api_exceptions.dart';
-import 'package:sipaealuno/src/utils/cache_repository.dart';
-import 'package:sipaealuno/src/utils/hive_box.dart';
 
 class ApiBaseHelper {
   final _authCache = HiveCache(

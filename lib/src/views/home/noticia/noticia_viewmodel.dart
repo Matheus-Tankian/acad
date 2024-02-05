@@ -1,7 +1,8 @@
+import 'package:acad/src/models/noticia/noticia_model.dart';
+import 'package:acad/src/repository/noticia/noticia_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:sipaealuno/src/models/noticia/noticia_model.dart';
-import 'package:sipaealuno/src/repository/noticia/noticia_repository.dart';
+
 
 class NoticiaViewModel extends ChangeNotifier {
   final NoticiaReposity _noticiaReposity;

@@ -1,9 +1,9 @@
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/core/app_fonts.dart';
+import 'package:acad/src/models/horario/horario_model.dart';
+import 'package:acad/src/widgets/horario_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/core/app_fonts.dart';
-import 'package:sipaealuno/src/models/horario/horario_model.dart';
-import 'package:sipaealuno/src/widgets/horario_card_widget.dart';
 
 class HorarioWidget extends StatefulWidget {
   final List<DiaModel> horarios;

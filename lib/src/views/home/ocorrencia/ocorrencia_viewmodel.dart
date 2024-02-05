@@ -1,8 +1,8 @@
 import 'dart:developer';
 
+import 'package:acad/src/models/ocorrencia/ocorrencia_model.dart';
+import 'package:acad/src/repository/ocorrencia/ocorrencia_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:sipaealuno/src/models/ocorrencia/ocorrencia_model.dart';
-import 'package:sipaealuno/src/repository/ocorrencia/ocorrencia_repository.dart';
 
 class OcorrenciaViewModel extends ChangeNotifier {
   final OcorrenciaReposity _ocorrenciaReposity;

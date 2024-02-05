@@ -1,8 +1,8 @@
+import 'package:acad/src/models/nova_senha/nova_senha_model.dart';
+import 'package:acad/src/services/http/api_base.dart';
+import 'package:acad/src/utils/api_urls.dart';
+import 'package:acad/src/utils/hive_box.dart';
 import 'package:hive/hive.dart';
-import 'package:sipaealuno/src/models/nova_senha/nova_senha_model.dart';
-import 'package:sipaealuno/src/services/http/api_base.dart';
-import 'package:sipaealuno/src/utils/api_urls.dart';
-import 'package:sipaealuno/src/utils/hive_box.dart';
 
 abstract class NovaSenhaReposity {
   Future<void> postNovaSenha(NovaSenhaModel novaSenhaModel);

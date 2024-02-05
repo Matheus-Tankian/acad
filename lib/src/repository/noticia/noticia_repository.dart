@@ -1,5 +1,5 @@
-import 'package:sipaealuno/src/models/noticia/noticia_model.dart';
-import 'package:sipaealuno/src/services/mocks/noticia_mock.dart';
+import 'package:acad/src/models/noticia/noticia_model.dart';
+import 'package:acad/src/services/mocks/noticia_mock.dart';
 
 abstract class NoticiaReposity {
   Future<List<NoticiaModel>> getAllNoticias();

@@ -1,7 +1,7 @@
+import 'package:acad/src/app.dart';
+import 'package:acad/src/core/app_colors.dart';
+import 'package:acad/src/core/app_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:sipaealuno/src/app.dart';
-import 'package:sipaealuno/src/core/app_colors.dart';
-import 'package:sipaealuno/src/core/app_fonts.dart';
 
 Future<void> alertMessage(
   BuildContext context,

@@ -1,5 +1,5 @@
-import 'package:sipaealuno/src/models/horario/horario_model.dart';
-import 'package:sipaealuno/src/services/mocks/horario_mock.dart';
+import 'package:acad/src/models/horario/horario_model.dart';
+import 'package:acad/src/services/mocks/horario_mock.dart';
 
 abstract class DiaReposity {
   Future<List<DiaModel>> getAllHorario();

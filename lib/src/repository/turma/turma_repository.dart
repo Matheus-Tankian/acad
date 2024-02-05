@@ -1,5 +1,5 @@
-import 'package:sipaealuno/src/models/turma/turma_model.dart';
-import 'package:sipaealuno/src/services/mocks/turma_mock.dart';
+import 'package:acad/src/models/turma/turma_model.dart';
+import 'package:acad/src/services/mocks/turma_mock.dart';
 
 abstract class TurmaReposity {
   Future<List<TurmaModel>> getAllTurmas();
