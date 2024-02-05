@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:sipaealuno/src/models/noticia/noticia_model.dart';
 import 'package:sipaealuno/src/repository/noticia/noticia_repository.dart';
 
 class NoticiaViewModel extends ChangeNotifier {
   final NoticiaReposity _noticiaReposity;
+  final int _indexItem;
   bool _disposed = false;
 
   List<NoticiaModel> _noticias = [];
@@ -12,8 +14,17 @@ class NoticiaViewModel extends ChangeNotifier {
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
-  NoticiaViewModel(this._noticiaReposity) {
+  final ItemScrollController scrollController = ItemScrollController();
+
+  NoticiaViewModel(this._noticiaReposity, this._indexItem) {
     loading();
+  }
+
+  void animatedScrollController() {
+    scrollController.scrollTo(
+      index: _indexItem,
+      duration: const Duration(seconds: 1),
+    );
   }
 
   void changeNoticias(List<NoticiaModel> value) async {
@@ -32,6 +43,10 @@ class NoticiaViewModel extends ChangeNotifier {
       const Duration(seconds: 1),
     );
     changeIsLoading(true);
+    await Future.delayed(
+      const Duration(milliseconds: 200),
+    );
+    animatedScrollController();
   }
 
   Future<List<NoticiaModel>> getNoticias() async {

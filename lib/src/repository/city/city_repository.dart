@@ -1,5 +1,7 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 import 'package:sipaealuno/src/models/city/city_model.dart';
-import 'package:sipaealuno/src/services/http/api_base.dart';
 import 'package:sipaealuno/src/utils/api_urls.dart';
 
 abstract class CityReposity {
@@ -7,14 +9,16 @@ abstract class CityReposity {
 }
 
 class CityReposityImpl implements CityReposity {
-  final ApiBaseHelper _apiBaseHelper = ApiBaseHelper();
-
   @override
   Future<List<CityModel>> getAllCities() async {
-    final response = await _apiBaseHelper.get(getCitysUrl());
+    final response = await http.get(Uri.parse(cityUrl));
 
-    Iterable list = response;
+    if (response.statusCode == 200) {
+      Iterable list = json.decode(response.body);
 
-    return list.map((cities) => CityModel.fromMap(cities)).toList();
+      return list.map((cities) => CityModel.fromMap(cities)).toList();
+    } else {
+      throw Exception('Falha ao carregar os dados da API');
+    }
   }
 }

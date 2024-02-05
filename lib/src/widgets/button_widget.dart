@@ -8,6 +8,7 @@ class BunttonWidget extends StatefulWidget {
   final Color? buttonColor;
   final Function() onTap;
   final EdgeInsets? paddingButton;
+  final Widget? child;
 
   const BunttonWidget({
     super.key,
@@ -16,6 +17,7 @@ class BunttonWidget extends StatefulWidget {
     this.buttonColor,
     required this.onTap,
     this.paddingButton,
+    this.child,
   });
 
   @override
@@ -36,10 +38,12 @@ class _BunttonWidgetState extends State<BunttonWidget> {
           padding:
               widget.paddingButton ?? const EdgeInsets.symmetric(vertical: 20),
           child: Center(
-            child: Text(
-              widget.title,
-              style: AppFonts.text16Semibold.copyWith(color: AppColors.white),
-            ),
+            child: widget.child ??
+                Text(
+                  widget.title,
+                  style:
+                      AppFonts.text16Semibold.copyWith(color: AppColors.white),
+                ),
           ),
         ),
       ),

@@ -24,7 +24,7 @@ final List<NoticiaModel> noticiasMock = [
     title: 'Dia da arvore',
     infoText:
         'Todos da nossa equipe escolar convida todos para uma boa leitura nesse lindo dia do livro haverá lanches e muita diversão lindo dia do livro haverá lanches e muita diversão lindo dia do livro haverá lanches e muita diversão',
-    tagLabel: 'Noticia',
+    tagLabel: 'Notícia',
     tagColor: AppColors.green,
   ),
   NoticiaModel(
@@ -32,7 +32,7 @@ final List<NoticiaModel> noticiasMock = [
     title: 'Dia do programador',
     infoText:
         'Todos da nossa equipe escolar convida todos para uma boa leitura nesse lindo dia do livro haverá lanches e muita diversão lindo dia do livro haverá lanches e muita diversão lindo dia do livro haverá lanches e muita diversão',
-    tagLabel: 'Noticia',
+    tagLabel: 'Notícia',
     tagColor: AppColors.purple,
     imgsList: imgListMock,
   ),

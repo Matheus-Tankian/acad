@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sipaealuno/src/core/app_colors.dart';
+import 'package:sipaealuno/src/core/app_fonts.dart';
 
 class DefaultDropdownWidget extends StatefulWidget {
   const DefaultDropdownWidget({
@@ -9,6 +10,7 @@ class DefaultDropdownWidget extends StatefulWidget {
     this.hintText,
     this.hasError = false,
     this.enabled = true,
+    this.backgroundColor,
   }) : super(key: key);
 
   final List<String> itens;
@@ -16,6 +18,7 @@ class DefaultDropdownWidget extends StatefulWidget {
   final Widget? hintText;
   final bool hasError;
   final bool enabled;
+  final Color? backgroundColor;
 
   @override
   State<DefaultDropdownWidget> createState() => _DefaultDropdownWidgetState();
@@ -23,37 +26,30 @@ class DefaultDropdownWidget extends StatefulWidget {
 
 class _DefaultDropdownWidgetState extends State<DefaultDropdownWidget> {
   String dropdownValue = '';
-  OutlineInputBorder dropdownBorder = const OutlineInputBorder(
-    borderSide: BorderSide(color: AppColors.gray),
-  );
+  bool itemSelected = false;
+  OutlineInputBorder getDropdownBorder() {
+    return OutlineInputBorder(
+      borderSide: BorderSide(
+          color: itemSelected ? AppColors.peachFury5 : AppColors.gray),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Visibility(
-          visible: widget.hasError,
-          replacement: const SizedBox(),
-          child: Text(
-            '*Campo obrigatório',
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(color: Colors.red),
-          ),
-        ),
         const SizedBox(height: 6),
         Container(
-          color: AppColors.grayCard,
+          color: widget.backgroundColor ?? AppColors.grayCard,
           child: DropdownButtonFormField<String>(
             decoration: InputDecoration(
               enabledBorder: widget.hasError
                   ? const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.red),
                     )
-                  : dropdownBorder,
-              border: dropdownBorder, // Adicione esta linha
+                  : getDropdownBorder(),
+              border: getDropdownBorder(),
             ),
             hint: widget.hintText ??
                 RichText(
@@ -85,16 +81,23 @@ class _DefaultDropdownWidgetState extends State<DefaultDropdownWidget> {
                 ? (String? value) {
                     setState(() {
                       dropdownValue = value ?? '';
+                      dropdownValue != ''
+                          ? itemSelected = true
+                          : itemSelected = false;
                     });
                     widget.onChanged(value);
                   }
                 : null,
           ),
         ),
+        widget.hasError ? const SizedBox(height: 6) : const SizedBox(),
         Visibility(
           visible: widget.hasError,
           replacement: const SizedBox(),
-          child: const Text('Selecione o campo'),
+          child: Text(
+            'Selecione o campo',
+            style: AppFonts.text16Regular.copyWith(color: AppColors.red),
+          ),
         ),
         widget.hasError ? const SizedBox(height: 6) : const SizedBox(),
       ],

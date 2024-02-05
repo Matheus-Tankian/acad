@@ -1,18 +1,18 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:sipaealuno/src/app.dart';
-import 'package:sipaealuno/src/models/city/city_model.dart';
 import 'package:sipaealuno/src/models/horario/horario_model.dart';
 import 'package:sipaealuno/src/models/noticia/noticia_model.dart';
 import 'package:sipaealuno/src/models/perfil/perfil_model.dart';
-import 'package:sipaealuno/src/repository/city/city_repository.dart';
 import 'package:sipaealuno/src/repository/horario.dart/horario_repository.dart';
 import 'package:sipaealuno/src/repository/noticia/noticia_repository.dart';
 import 'package:sipaealuno/src/repository/perfil/perfil_repository.dart';
+import 'package:sipaealuno/src/utils/cache_repository.dart';
+import 'package:sipaealuno/src/utils/hive_box.dart';
 
 class HomeViewModel extends ChangeNotifier {
-  final CityReposity _cityReposity;
   final NoticiaReposity _noticiaReposity;
   final DiaReposity _diaReposity;
   final PerfilReposity _perfilReposity;
@@ -31,7 +31,6 @@ class HomeViewModel extends ChangeNotifier {
   PerfilModel get userPerfil => _userPerfil;
 
   HomeViewModel(
-    this._cityReposity,
     this._noticiaReposity,
     this._diaReposity,
     this._perfilReposity,
@@ -66,20 +65,25 @@ class HomeViewModel extends ChangeNotifier {
   Future<void> exitApp() async {
     await Navigator.pushNamedAndRemoveUntil(
       navigationApp.currentContext!,
-      "/login",
+      "/",
       (route) => false,
     );
+  }
+
+  Future<void> clearAllBoxes() async {
+    await HiveCache(Hive.box(hiveAuthBoxName)).clearCache();
+    await Hive.box(hiveBoxCityUrl).clear();
   }
 
   Future<void> loadPage() async {
     changeLoad(true);
     try {
+      await getAllPerfil();
       await getPreviaNews();
       await getHorario();
-      await getAllCities();
-      await getAllPerfil();
+      await Future.delayed(const Duration(seconds: 1));
     } catch (e) {
-      log('Erro durante a carga de dados: $e');
+      log('Erro durante a carga de dados home page: $e');
     } finally {
       changeLoad(false);
     }
@@ -104,19 +108,6 @@ class HomeViewModel extends ChangeNotifier {
     changeNoticias(result);
 
     return result;
-  }
-
-  Future<List<CityModel>> getAllCities() async {
-    final result = await _cityReposity.getAllCities();
-
-    //for (final value in result) {
-    // log('ID: ${value.id}');
-    // log('Cidade: ${value.cidade}');
-    // log('URL: ${value.url}');
-    // log('====================');
-    //}
-
-    return result.toList();
   }
 
   @override

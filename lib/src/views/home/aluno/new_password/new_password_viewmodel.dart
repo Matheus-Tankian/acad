@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:sipaealuno/src/app.dart';
 import 'package:sipaealuno/src/core/app_colors.dart';
@@ -176,7 +174,6 @@ class NewPasswordViewModel extends ChangeNotifier {
       showSnackbar('Senha atualizada com sucesso', false);
     } catch (e) {
       showSnackbar('Error $e', true);
-      log('Erro $e');
     }
   }
 

@@ -23,7 +23,10 @@ class LineUpMetter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: padding ?? const EdgeInsets.symmetric(horizontal: 20),
+      padding: padding ??
+          EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width >= 400 ? 20 : 10,
+          ),
       child: Row(
         children: [
           Expanded(

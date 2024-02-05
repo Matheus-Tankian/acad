@@ -39,7 +39,7 @@ class OcorrenciaViewModel extends ChangeNotifier {
       await Future.delayed(const Duration(seconds: 1));
       await getAllOcorencias();
     } catch (e) {
-      log('Erro durante a carga de dados: $e');
+      log('Erro durante a carga de dados ocorrencias: $e');
     } finally {
       changeIsLoading(true);
     }

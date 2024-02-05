@@ -50,12 +50,13 @@ class NotaView extends StatelessWidget {
                     horizontal: 14,
                   ),
                   decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        strokeAlign: 1,
-                        color: AppColors.grayCard,
-                      )),
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      strokeAlign: 1,
+                      color: AppColors.grayCard,
+                    ),
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,7 +90,6 @@ class NotaView extends StatelessWidget {
                           ),
                         ],
                       ),
-                      //======
                       const SizedBox(height: 20),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -115,7 +115,6 @@ class NotaView extends StatelessWidget {
                           ),
                         ],
                       ),
-                      //=====
                       Visibility(
                         visible: provider.hasSchool == true,
                         replacement: const SizedBox(),
@@ -145,7 +144,6 @@ class NotaView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      //========
                       Visibility(
                         visible: provider.hasSchool == true,
                         replacement: Center(

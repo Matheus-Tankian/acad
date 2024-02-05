@@ -6,6 +6,7 @@ class PerfilModel {
   final String? userTelefone;
   final String? userNivel;
   final String? userAcesso;
+  final String? userImage;
 
   PerfilModel({
     this.userName,
@@ -13,6 +14,7 @@ class PerfilModel {
     this.userTelefone,
     this.userNivel,
     this.userAcesso,
+    this.userImage,
   });
 
   Map<String, dynamic> toMap() {
@@ -22,6 +24,7 @@ class PerfilModel {
       'userTelefone': userTelefone,
       'userNivel': userNivel,
       'userAcesso': userAcesso,
+      'userImage': userImage,
     };
   }
 
@@ -32,6 +35,7 @@ class PerfilModel {
       userTelefone: (map['userTelefone'] ?? '').toString(),
       userNivel: (map['userNivel'] ?? '').toString(),
       userAcesso: (map['userAcesso'] ?? '').toString(),
+      userImage: (map['userImage'] ?? '').toString(),
     );
   }
 
@@ -41,6 +45,7 @@ class PerfilModel {
         userName: '',
         userNivel: '',
         userTelefone: '',
+        userImage: '',
       );
 
   String toJson() => json.encode(toMap());

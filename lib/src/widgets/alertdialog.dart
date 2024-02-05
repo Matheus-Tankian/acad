@@ -11,8 +11,15 @@ Future<void> alertMessage(
     context: navigationApp.currentContext!,
     builder: (BuildContext context) {
       return AlertDialog(
+        backgroundColor: AppColors.peachFury1,
+        shape: BeveledRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
         title: const Text('Confirmar Saída'),
-        content: const Text('Você realmente deseja sair?'),
+        content: Text(
+          'Você realmente deseja sair?',
+          style: AppFonts.text14Regular,
+        ),
         actions: <Widget>[
           button(
             name: 'Cancelar',

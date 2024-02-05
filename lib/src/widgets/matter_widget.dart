@@ -42,8 +42,24 @@ class Matter extends StatefulWidget {
   State<Matter> createState() => _MatterState();
 }
 
-class _MatterState extends State<Matter> {
+class _MatterState extends State<Matter> with TickerProviderStateMixin {
   bool isOppen = false;
+  late final AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      duration: const Duration(milliseconds: 400),
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,10 +69,15 @@ class _MatterState extends State<Matter> {
         Visibility(
           visible: isOppen,
           replacement: InkWell(
-            onTap: () {
+            onTap: () async {
               setState(() {
                 isOppen = !isOppen;
               });
+              if (isOppen) {
+                controller.forward();
+              } else {
+                controller.reverse();
+              }
             },
             child: Container(
               padding: const EdgeInsets.only(
@@ -68,7 +89,7 @@ class _MatterState extends State<Matter> {
               decoration: const BoxDecoration(
                 color: AppColors.peachFury6,
                 borderRadius: BorderRadius.all(
-                  Radius.circular(16),
+                  Radius.circular(4),
                 ),
               ),
               child: Row(
@@ -82,19 +103,28 @@ class _MatterState extends State<Matter> {
                     ),
                   ),
                   const Spacer(),
-                  const Icon(
-                    Icons.arrow_drop_down_outlined,
-                    color: AppColors.white,
-                    size: 24,
+                  AnimatedRotation(
+                    turns: isOppen ? 0.50 : 1,
+                    duration: const Duration(milliseconds: 400),
+                    child: const Icon(
+                      Icons.arrow_drop_up_outlined,
+                      color: Colors.white,
+                      size: 24,
+                    ),
                   ),
                 ],
               ),
             ),
           ),
           child: InkWell(
-            onTap: () {
+            onTap: () async {
               setState(() {
                 isOppen = !isOppen;
+                if (isOppen) {
+                  controller.forward();
+                } else {
+                  controller.reverse();
+                }
               });
             },
             child: Container(
@@ -107,8 +137,8 @@ class _MatterState extends State<Matter> {
               decoration: const BoxDecoration(
                 color: AppColors.peachFury6,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  topRight: Radius.circular(16),
+                  topLeft: Radius.circular(4),
+                  topRight: Radius.circular(4),
                 ),
               ),
               child: Row(
@@ -122,10 +152,14 @@ class _MatterState extends State<Matter> {
                     ),
                   ),
                   const Spacer(),
-                  const Icon(
-                    Icons.arrow_drop_up_outlined,
-                    color: Colors.white,
-                    size: 24,
+                  AnimatedRotation(
+                    turns: isOppen ? 0.50 : 1,
+                    duration: const Duration(milliseconds: 400),
+                    child: const Icon(
+                      Icons.arrow_drop_up_outlined,
+                      color: Colors.white,
+                      size: 24,
+                    ),
                   ),
                 ],
               ),
@@ -133,250 +167,258 @@ class _MatterState extends State<Matter> {
           ),
         ),
         //notas
-        Visibility(
-          visible: isOppen,
-          child: Container(
-            color: AppColors.grayMateria,
-            child: Column(
-              children: [
-                const SizedBox(height: 22),
-                LineUpMetter(
-                  middle: Center(
-                    child: Text(
-                      'notas',
-                      style: AppFonts.text18Regular,
+        SizeTransition(
+          sizeFactor: CurvedAnimation(
+            parent: controller,
+            curve: isOppen ? Curves.easeIn : Curves.easeOut,
+          ),
+          axis: Axis.vertical,
+          axisAlignment: -1,
+          child: Opacity(
+            opacity: isOppen ? 1.0 : 1.0,
+            child: Container(
+              color: AppColors.grayMateria,
+              child: Column(
+                children: [
+                  const SizedBox(height: 22),
+                  LineUpMetter(
+                    middle: Center(
+                      child: Text(
+                        'notas',
+                        style: AppFonts.text18Regular,
+                      ),
                     ),
-                  ),
-                  trailing: Center(
-                    child: Text(
-                      'faltas',
-                      style: AppFonts.text18Regular,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 22),
-                LineUpMetter(
-                  leading: Text(
-                    '1º Bimestre',
-                    overflow: TextOverflow.ellipsis,
-                    style: AppFonts.text18Semibold,
-                  ),
-                  middle: Center(
-                    child: SizedBox(
-                      child: TagWidget(
-                        backgroundColor: AppColors.peachFury5,
-                        label: widget.primeiroBi,
-                        labelStyle: AppFonts.text16Semibold
-                            .copyWith(color: AppColors.white),
-                        borderRadius: 8,
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 4,
-                          horizontal: 10,
-                        ),
+                    trailing: Center(
+                      child: Text(
+                        'faltas',
+                        style: AppFonts.text18Regular,
                       ),
                     ),
                   ),
-                  trailing: Center(
-                    child: Text(
-                      '${widget.primeiroFalt}',
-                      style: AppFonts.text18Regular,
+                  const SizedBox(height: 22),
+                  LineUpMetter(
+                    leading: Text(
+                      '1º Bimestre',
+                      overflow: TextOverflow.ellipsis,
+                      style: AppFonts.text18Semibold,
                     ),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                LineUpMetter(
-                  leading: Text(
-                    '2º Bimestre',
-                    overflow: TextOverflow.ellipsis,
-                    style: AppFonts.text18Semibold,
-                  ),
-                  middle: Center(
-                    child: SizedBox(
-                      child: TagWidget(
-                        backgroundColor: AppColors.peachFury5,
-                        label: widget.segundoBi,
-                        labelStyle: AppFonts.text16Semibold
-                            .copyWith(color: AppColors.white),
-                        borderRadius: 8,
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 4,
-                          horizontal: 10,
-                        ),
-                      ),
-                    ),
-                  ),
-                  trailing: Center(
-                    child: Text(
-                      '${widget.segundoFalt}',
-                      style: AppFonts.text18Regular,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                LineUpMetter(
-                  leading: Text(
-                    '3º Bimestre',
-                    overflow: TextOverflow.ellipsis,
-                    style: AppFonts.text18Semibold,
-                  ),
-                  middle: Center(
-                    child: SizedBox(
-                      child: TagWidget(
-                        backgroundColor: AppColors.peachFury5,
-                        label: widget.terceiroBi,
-                        labelStyle: AppFonts.text16Semibold
-                            .copyWith(color: AppColors.white),
-                        borderRadius: 8,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 4, horizontal: 10),
-                      ),
-                    ),
-                  ),
-                  trailing: Center(
-                    child: Text(
-                      '${widget.terceiroFalt}',
-                      style: AppFonts.text18Regular,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                LineUpMetter(
-                  leading: Text(
-                    '4º Bimestre',
-                    overflow: TextOverflow.ellipsis,
-                    style: AppFonts.text18Semibold,
-                  ),
-                  middle: Center(
-                    child: SizedBox(
-                      child: TagWidget(
-                        backgroundColor: AppColors.peachFury5,
-                        label: widget.quartoBi,
-                        labelStyle: AppFonts.text16Semibold
-                            .copyWith(color: AppColors.white),
-                        borderRadius: 8,
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 4,
-                          horizontal: 10,
-                        ),
-                      ),
-                    ),
-                  ),
-                  trailing: Center(
-                    child: Text(
-                      '${widget.quartoFalt}',
-                      style: AppFonts.text18Regular,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 5),
-                const SizedBox(height: 5),
-                LineUpMetter(
-                  leading: Text(
-                    'Média',
-                    overflow: TextOverflow.ellipsis,
-                    style: AppFonts.text18Semibold,
-                  ),
-                  middle: Center(
-                    child: SizedBox(
-                      child: TagWidget(
-                        backgroundColor: AppColors.peachFury5,
-                        label: widget.media,
-                        labelStyle: AppFonts.text16Semibold
-                            .copyWith(color: AppColors.white),
-                        borderRadius: 8,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 4, horizontal: 10),
-                      ),
-                    ),
-                  ),
-                  trailing: Center(
-                    child: Text(
-                      '',
-                      style: AppFonts.text18Regular,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 5),
-                Visibility(
-                  visible:
-                      (widget.conselho != '') || (widget.recuperacao != ''),
-                  child: const Divider(
-                    color: AppColors.black,
-                    height: 2,
-                  ),
-                ),
-                Visibility(
-                  visible: widget.recuperacao != '',
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 5),
-                      LineUpMetter(
-                        leading: Text(
-                          'Recuperação',
-                          overflow: TextOverflow.ellipsis,
-                          style: AppFonts.text18Semibold,
-                        ),
-                        middle: Center(
-                          child: SizedBox(
-                            child: TagWidget(
-                              backgroundColor: AppColors.peachFury5,
-                              label: widget.recuperacao,
-                              labelStyle: AppFonts.text16Semibold
-                                  .copyWith(color: AppColors.white),
-                              borderRadius: 8,
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 4, horizontal: 10),
-                            ),
-                          ),
-                        ),
-                        trailing: Center(
-                          child: Text(
-                            '',
-                            style: AppFonts.text18Regular,
+                    middle: Center(
+                      child: SizedBox(
+                        child: TagWidget(
+                          backgroundColor: AppColors.peachFury5,
+                          label: widget.primeiroBi,
+                          labelStyle: AppFonts.text16Semibold
+                              .copyWith(color: AppColors.white),
+                          borderRadius: 8,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 4,
+                            horizontal: 10,
                           ),
                         ),
                       ),
-                    ],
+                    ),
+                    trailing: Center(
+                      child: Text(
+                        '${widget.primeiroFalt}',
+                        style: AppFonts.text18Regular,
+                      ),
+                    ),
                   ),
-                ),
-                Visibility(
-                  visible: widget.conselho != '',
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 12),
-                      LineUpMetter(
-                        leading: Text(
-                          'Conselho',
-                          overflow: TextOverflow.ellipsis,
-                          style: AppFonts.text18Semibold,
+                  const SizedBox(height: 12),
+                  LineUpMetter(
+                    leading: Text(
+                      '2º Bimestre',
+                      overflow: TextOverflow.ellipsis,
+                      style: AppFonts.text18Semibold,
+                    ),
+                    middle: Center(
+                      child: SizedBox(
+                        child: TagWidget(
+                          backgroundColor: AppColors.peachFury5,
+                          label: widget.segundoBi,
+                          labelStyle: AppFonts.text16Semibold
+                              .copyWith(color: AppColors.white),
+                          borderRadius: 8,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 4,
+                            horizontal: 10,
+                          ),
                         ),
-                        middle: Center(
-                          child: SizedBox(
-                            child: TagWidget(
-                              backgroundColor: AppColors.peachFury5,
-                              label: widget.conselho,
-                              labelStyle: AppFonts.text16Semibold
-                                  .copyWith(color: AppColors.white),
-                              borderRadius: 8,
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 4,
-                                horizontal: 10,
+                      ),
+                    ),
+                    trailing: Center(
+                      child: Text(
+                        '${widget.segundoFalt}',
+                        style: AppFonts.text18Regular,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  LineUpMetter(
+                    leading: Text(
+                      '3º Bimestre',
+                      overflow: TextOverflow.ellipsis,
+                      style: AppFonts.text18Semibold,
+                    ),
+                    middle: Center(
+                      child: SizedBox(
+                        child: TagWidget(
+                          backgroundColor: AppColors.peachFury5,
+                          label: widget.terceiroBi,
+                          labelStyle: AppFonts.text16Semibold
+                              .copyWith(color: AppColors.white),
+                          borderRadius: 8,
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 4, horizontal: 10),
+                        ),
+                      ),
+                    ),
+                    trailing: Center(
+                      child: Text(
+                        '${widget.terceiroFalt}',
+                        style: AppFonts.text18Regular,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  LineUpMetter(
+                    leading: Text(
+                      '4º Bimestre',
+                      overflow: TextOverflow.ellipsis,
+                      style: AppFonts.text18Semibold,
+                    ),
+                    middle: Center(
+                      child: SizedBox(
+                        child: TagWidget(
+                          backgroundColor: AppColors.peachFury5,
+                          label: widget.quartoBi,
+                          labelStyle: AppFonts.text16Semibold
+                              .copyWith(color: AppColors.white),
+                          borderRadius: 8,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 4,
+                            horizontal: 10,
+                          ),
+                        ),
+                      ),
+                    ),
+                    trailing: Center(
+                      child: Text(
+                        '${widget.quartoFalt}',
+                        style: AppFonts.text18Regular,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  const SizedBox(height: 5),
+                  LineUpMetter(
+                    leading: Text(
+                      'Média',
+                      overflow: TextOverflow.ellipsis,
+                      style: AppFonts.text18Semibold,
+                    ),
+                    middle: Center(
+                      child: SizedBox(
+                        child: TagWidget(
+                          backgroundColor: AppColors.peachFury5,
+                          label: widget.media,
+                          labelStyle: AppFonts.text16Semibold
+                              .copyWith(color: AppColors.white),
+                          borderRadius: 8,
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 4, horizontal: 10),
+                        ),
+                      ),
+                    ),
+                    trailing: Center(
+                      child: Text(
+                        '',
+                        style: AppFonts.text18Regular,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Visibility(
+                    visible:
+                        (widget.conselho != '') || (widget.recuperacao != ''),
+                    child: const Divider(
+                      color: AppColors.black,
+                      height: 2,
+                    ),
+                  ),
+                  Visibility(
+                    visible: widget.recuperacao != '',
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 5),
+                        LineUpMetter(
+                          leading: Text(
+                            'Recuperação',
+                            overflow: TextOverflow.ellipsis,
+                            style: AppFonts.text18Semibold,
+                          ),
+                          middle: Center(
+                            child: SizedBox(
+                              child: TagWidget(
+                                backgroundColor: AppColors.peachFury5,
+                                label: widget.recuperacao,
+                                labelStyle: AppFonts.text16Semibold
+                                    .copyWith(color: AppColors.white),
+                                borderRadius: 8,
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 4, horizontal: 10),
                               ),
                             ),
                           ),
-                        ),
-                        trailing: Center(
-                          child: Text(
-                            '',
-                            style: AppFonts.text18Regular,
+                          trailing: Center(
+                            child: Text(
+                              '',
+                              style: AppFonts.text18Regular,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 12),
-              ],
+                  Visibility(
+                    visible: widget.conselho != '',
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 12),
+                        LineUpMetter(
+                          leading: Text(
+                            'Conselho',
+                            overflow: TextOverflow.ellipsis,
+                            style: AppFonts.text18Semibold,
+                          ),
+                          middle: Center(
+                            child: SizedBox(
+                              child: TagWidget(
+                                backgroundColor: AppColors.peachFury5,
+                                label: widget.conselho,
+                                labelStyle: AppFonts.text16Semibold
+                                    .copyWith(color: AppColors.white),
+                                borderRadius: 8,
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 4,
+                                  horizontal: 10,
+                                ),
+                              ),
+                            ),
+                          ),
+                          trailing: Center(
+                            child: Text(
+                              '',
+                              style: AppFonts.text18Regular,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                ],
+              ),
             ),
           ),
         ),
@@ -384,17 +426,17 @@ class _MatterState extends State<Matter> {
         Visibility(
           visible: isOppen,
           child: Container(
-            padding: const EdgeInsets.only(
-              left: 20,
-              right: 20,
+            padding: EdgeInsets.only(
+              left: MediaQuery.of(context).size.width >= 400 ? 20 : 10,
+              right: MediaQuery.of(context).size.width >= 400 ? 20 : 10,
             ),
             height: 72,
             width: double.infinity,
             decoration: const BoxDecoration(
               color: AppColors.peachFury6,
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(16),
-                bottomRight: Radius.circular(16),
+                bottomLeft: Radius.circular(4),
+                bottomRight: Radius.circular(4),
               ),
             ),
             child: Column(

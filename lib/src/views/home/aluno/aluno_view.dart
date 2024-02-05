@@ -24,7 +24,6 @@ class AlunoView extends StatelessWidget {
               ),
             ),
             child: SingleChildScrollView(
-              physics: const NeverScrollableScrollPhysics(),
               child: Column(
                 children: [
                   UserProfile(
@@ -35,6 +34,7 @@ class AlunoView extends StatelessWidget {
                     telefone: provider.userPerfil.userTelefone!,
                     nivel: provider.userPerfil.userNivel!,
                     acess: provider.userPerfil.userAcesso!,
+                    userImage: provider.userPerfil.userImage,
                   ),
                 ],
               ),

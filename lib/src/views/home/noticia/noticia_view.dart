@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:sipaealuno/src/core/app_colors.dart';
 import 'package:sipaealuno/src/repository/noticia/noticia_repository.dart';
 import 'package:sipaealuno/src/views/home/noticia/noticia_viewmodel.dart';
 import 'package:sipaealuno/src/widgets/card_new_widget.dart';
 
 class NoticiaView extends StatelessWidget {
-  const NoticiaView({super.key});
+  final int indexSelected;
+  const NoticiaView({
+    super.key,
+    required this.indexSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<NoticiaViewModel>(
-      create: (_) => NoticiaViewModel(NoticiaReposityImpl()),
+      create: (_) => NoticiaViewModel(
+        NoticiaReposityImpl(),
+        indexSelected,
+      ),
       child: Consumer<NoticiaViewModel>(
         builder: (_, provider, __) => Scaffold(
           appBar: AppBar(
@@ -28,7 +36,8 @@ class NoticiaView extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                  child: ListView.builder(
+                  child: ScrollablePositionedList.builder(
+                    itemScrollController: provider.scrollController,
                     padding: const EdgeInsets.symmetric(
                       vertical: 12,
                       horizontal: 10,

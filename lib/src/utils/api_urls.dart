@@ -1,6 +1,6 @@
-const baseUrl = "https://sipae.com.br/";
-
-String getCitysUrl() => 'api';
+const baseUrl = "https://thirsty-villani.207-246-79-65.plesk.page/api";
+const authUrl = "auth";
+const cityUrl = 'https://sipae.com.br/api/';
 
 String getOcorrenciasUrl() => 'ocorrencias';
 

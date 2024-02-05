@@ -59,8 +59,6 @@ class _NewPasswordViewState extends State<NewPasswordView> {
                         nome: widget.nome,
                       ),
                       const SizedBox(height: 20),
-                      //
-
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +88,6 @@ class _NewPasswordViewState extends State<NewPasswordView> {
                         ],
                       ),
                       const SizedBox(height: 20),
-
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,9 +117,7 @@ class _NewPasswordViewState extends State<NewPasswordView> {
                           ),
                         ],
                       ),
-
                       const SizedBox(height: 30),
-
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.end,

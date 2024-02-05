@@ -109,6 +109,9 @@ void _ocorrenciaDialogo(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
         backgroundColor: AppColors.peachFury3,
         content: SizedBox(
           width: MediaQuery.of(context).size.height * 1,

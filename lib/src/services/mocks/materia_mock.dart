@@ -22,10 +22,10 @@ final List<MatterModel> matterMock = [
     terceiroFalt: 2,
     quartoFalt: 2,
     totalFalt: 3,
-    primeiroBi: '7.00',
-    segundoBi: '7.00',
+    primeiroBi: '6.00',
+    segundoBi: '8.00',
     terceiroBi: '7.00',
-    quartoBi: '7.00',
+    quartoBi: '9.00',
     mediaFinal: '7.00',
     media: '10.0',
   ),
@@ -86,7 +86,7 @@ final AlunoNotaModel alunoNotaMock2 = AlunoNotaModel(
 
 final List<MatterModel> matterMock2 = [
   MatterModel(
-      materia: 'Historia',
+      materia: 'História',
       primeiroFalt: 4,
       segundoFalt: 4,
       terceiroFalt: 2,

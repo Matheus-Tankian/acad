@@ -5,7 +5,6 @@ import 'package:sipaealuno/src/app.dart';
 import 'package:sipaealuno/src/core/app_colors.dart';
 import 'package:sipaealuno/src/core/app_fonts.dart';
 import 'package:sipaealuno/src/core/app_icons.dart';
-import 'package:sipaealuno/src/repository/city/city_repository.dart';
 import 'package:sipaealuno/src/repository/horario.dart/horario_repository.dart';
 import 'package:sipaealuno/src/repository/noticia/noticia_repository.dart';
 import 'package:sipaealuno/src/repository/perfil/perfil_repository.dart';
@@ -23,7 +22,6 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<HomeViewModel>(
       create: (_) => HomeViewModel(
-        CityReposityImpl(),
         NoticiaReposityImpl(),
         DiaReposityImpl(),
         PerfilReposityImpl(),
@@ -38,7 +36,6 @@ class HomeView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                //perfil
                 Container(
                   padding: const EdgeInsets.only(
                     top: 30,
@@ -60,6 +57,8 @@ class HomeView extends StatelessWidget {
                               Navigator.of(navigationApp.currentContext!,
                                       rootNavigator: true)
                                   .pop();
+
+                              provider.clearAllBoxes();
                               provider.exitApp();
                             });
                           },
@@ -73,6 +72,7 @@ class HomeView extends StatelessWidget {
                         ),
                       ),
                       PerfilWidget(
+                        imgPerfil: provider.userPerfil.userImage,
                         nome: provider.userPerfil.userName!.split(' ')[0],
                         avatarSize: 70,
                       ),
@@ -80,7 +80,6 @@ class HomeView extends StatelessWidget {
                     ],
                   ),
                 ),
-                //avisos
                 const SizedBox(height: 34),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -108,7 +107,8 @@ class HomeView extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const NoticiaView(),
+                              builder: (context) =>
+                                  const NoticiaView(indexSelected: 0),
                             ),
                           );
                         },
@@ -148,7 +148,8 @@ class HomeView extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const NoticiaView(),
+                                      builder: (context) =>
+                                          NoticiaView(indexSelected: index),
                                     ),
                                   );
                                 },
@@ -160,9 +161,6 @@ class HomeView extends StatelessWidget {
                     ],
                   ),
                 ),
-
-                //horarios
-
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,

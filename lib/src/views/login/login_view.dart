@@ -3,8 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:sipaealuno/src/core/app_colors.dart';
 import 'package:sipaealuno/src/core/app_fonts.dart';
 import 'package:sipaealuno/src/core/app_images.dart';
+import 'package:sipaealuno/src/repository/auth/auth_repository.dart';
+import 'package:sipaealuno/src/repository/city/city_repository.dart';
 import 'package:sipaealuno/src/views/login/login_viewmodel.dart';
 import 'package:sipaealuno/src/widgets/button_widget.dart';
+import 'package:sipaealuno/src/widgets/default_dropdown_widget.dart';
 import 'package:sipaealuno/src/widgets/textfield_widget.dart';
 
 class LoginView extends StatelessWidget {
@@ -13,7 +16,10 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<LoginViewModel>(
-      create: (_) => LoginViewModel(),
+      create: (_) => LoginViewModel(
+        AuthRepositoryImpl(),
+        CityReposityImpl(),
+      ),
       child: Consumer<LoginViewModel>(
         builder: (_, provider, __) => Scaffold(
           body: Padding(
@@ -29,6 +35,25 @@ class LoginView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text(
+                          'Selecione um município',
+                          style: AppFonts.text16Regular
+                              .copyWith(color: AppColors.gray),
+                        ),
+                        DefaultDropdownWidget(
+                          backgroundColor: Colors.transparent,
+                          itens: provider.citys,
+                          onChanged: (value) {
+                            provider.changeCity(value!);
+                          },
+                          hintText: const Text(
+                            'Selecione sua cidade',
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                          hasError: provider.hasErrorCity,
+                        ),
+                        const SizedBox(height: 6),
                         Text(
                           'Usuário',
                           style: AppFonts.text16Regular
@@ -75,22 +100,34 @@ class LoginView extends StatelessWidget {
                     const SizedBox(height: 44),
                     BunttonWidget(
                       title: 'Acessar',
+                      child: Visibility(
+                        visible: provider.beLoading,
+                        replacement: Text(
+                          'Acessar',
+                          style: AppFonts.text16Semibold
+                              .copyWith(color: AppColors.white),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: LinearProgressIndicator(
+                            color: AppColors.peachFury6,
+                            backgroundColor: AppColors.peachFury4,
+                          ),
+                        ),
+                      ),
                       onTap: () {
                         provider.checkUserSenha();
+                        provider.checkCity();
                         FocusScope.of(context).unfocus();
                       },
                     ),
-                    const SizedBox(height: 18),
-                    Visibility(
-                      visible: provider.beLoading,
-                      child: const SizedBox(
-                        height: 40,
-                        width: 40,
-                        child: CircularProgressIndicator(
-                          color: AppColors.peachFury5,
-                        ),
-                      ),
+                    const SizedBox(height: 10),
+                    Text(
+                      provider.appVersionText,
+                      style: AppFonts.text14Semibold
+                          .copyWith(color: AppColors.grayText),
                     ),
+                    const SizedBox(height: 18),
                   ],
                 ),
               ),

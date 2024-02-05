@@ -29,9 +29,9 @@ final List<OcorrenciaModel> ocorreciaMock = [
     aluno: 'José',
     data: '12/12/2024',
     descricao:
-        'asdasdsd asdasda asdasdasd asdasdasd asdasd asdasdsadas asdasdasda asdasdasdasda /Veio vestido com um sobre tudo preto de couro e um capus, e um mochila com uma 12 cano curto e uma tec-9, e varios projetios, estava pronto para refazer a cena de collumbine',
+        'asdasdsd asdasda asdasdasd asdasdasd asdasd asdasdsadas asdasdasda asdasdasdasda lora asdasd fdgfgfg riuiurtr bxcvbcvb asdasdas ljkkjhkhj erertere fgfgfg',
     id: 4,
     sala: '8 ANO "A"',
-    tipo: 'Massacre',
+    tipo: 'Teste',
   ),
 ];

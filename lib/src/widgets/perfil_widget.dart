@@ -9,8 +9,8 @@ class PerfilWidget extends StatelessWidget {
   final Color? color;
   final TextStyle? nameTextStyle;
   final TextStyle? infoTextStyle;
-  final Widget? card;
   final double? avatarSize;
+  final String? imgPerfil;
   const PerfilWidget({
     super.key,
     required this.nome,
@@ -18,9 +18,9 @@ class PerfilWidget extends StatelessWidget {
     this.color,
     this.nameTextStyle,
     this.infoTextStyle,
-    this.card,
     this.infoText,
     this.avatarSize,
+    this.imgPerfil,
   });
 
   @override
@@ -39,11 +39,25 @@ class PerfilWidget extends StatelessWidget {
                 color: color ?? AppColors.gray,
                 borderRadius: const BorderRadius.all(Radius.circular(50)),
               ),
-              child: card ??
-                  const Icon(
-                    Icons.person,
-                    size: 50,
-                  ),
+              child: imgPerfil == null
+                  ? const Icon(
+                      Icons.person,
+                      size: 50,
+                    )
+                  : Container(
+                      height: 50,
+                      width: 50,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(50)),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.network(
+                          imgPerfil!,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
             ),
           ],
         ),

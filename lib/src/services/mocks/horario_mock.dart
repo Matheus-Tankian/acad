@@ -26,7 +26,7 @@ final List<DiaModel> diasMock = [
     horarios: horarios1Mock,
   ),
   DiaModel(
-    dia: 'Sabádo',
+    dia: 'Sábado',
     horarios: [],
   ),
 ];

@@ -153,13 +153,13 @@ class _HorarioWidgetState extends State<HorarioWidget> {
               InkWell(
                 onTap: () {
                   setState(() {
-                    diaSelecionado = 'sab';
+                    diaSelecionado = 'sáb';
                   });
                 },
                 child: Text(
                   'Sáb',
                   style: AppFonts.text16Semibold.copyWith(
-                      color: diaSelecionado == 'sab'
+                      color: diaSelecionado == 'sáb'
                           ? AppColors.peachFury6
                           : AppColors.black),
                 ),
