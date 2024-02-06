@@ -1,7 +1,6 @@
 import 'package:acad/src/core/app_colors.dart';
 import 'package:acad/src/core/app_fonts.dart';
 import 'package:acad/src/core/app_images.dart';
-import 'package:acad/src/repository/city/city_repository.dart';
 import 'package:acad/src/views/login/login_viewmodel.dart';
 import 'package:acad/src/widgets/button_widget.dart';
 import 'package:acad/src/widgets/textfield_widget.dart';
@@ -14,10 +13,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<LoginViewModel>(
-      create: (_) => LoginViewModel(
-        // AuthRepositoryImpl(),
-        CityReposityImpl(),
-      ),
+      create: (_) => LoginViewModel(),
       child: Consumer<LoginViewModel>(
         builder: (_, provider, __) => Scaffold(
           body: Padding(
@@ -96,7 +92,6 @@ class LoginView extends StatelessWidget {
                       ),
                       onTap: () {
                         provider.checkUserSenha();
-                        // provider.checkCity();
                         FocusScope.of(context).unfocus();
                       },
                     ),
