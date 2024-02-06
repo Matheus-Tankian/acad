@@ -1,3 +1,3 @@
 class AppImagens {
-  static const logo = 'assets/images/sipae_logo.png';
+  static const logo = 'assets/images/logo.png';
 }

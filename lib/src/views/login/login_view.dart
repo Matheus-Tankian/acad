@@ -1,15 +1,12 @@
 import 'package:acad/src/core/app_colors.dart';
 import 'package:acad/src/core/app_fonts.dart';
 import 'package:acad/src/core/app_images.dart';
-import 'package:acad/src/repository/auth/auth_repository.dart';
 import 'package:acad/src/repository/city/city_repository.dart';
 import 'package:acad/src/views/login/login_viewmodel.dart';
 import 'package:acad/src/widgets/button_widget.dart';
-import 'package:acad/src/widgets/default_dropdown_widget.dart';
 import 'package:acad/src/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -18,7 +15,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<LoginViewModel>(
       create: (_) => LoginViewModel(
-        AuthRepositoryImpl(),
+        // AuthRepositoryImpl(),
         CityReposityImpl(),
       ),
       child: Consumer<LoginViewModel>(
@@ -36,25 +33,6 @@ class LoginView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Selecione um município',
-                          style: AppFonts.text16Regular
-                              .copyWith(color: AppColors.gray),
-                        ),
-                        DefaultDropdownWidget(
-                          backgroundColor: Colors.transparent,
-                          itens: provider.citys,
-                          onChanged: (value) {
-                            provider.changeCity(value!);
-                          },
-                          hintText: const Text(
-                            'Selecione sua cidade',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                          hasError: provider.hasErrorCity,
-                        ),
-                        const SizedBox(height: 6),
                         Text(
                           'Usuário',
                           style: AppFonts.text16Regular
@@ -118,7 +96,7 @@ class LoginView extends StatelessWidget {
                       ),
                       onTap: () {
                         provider.checkUserSenha();
-                        provider.checkCity();
+                        // provider.checkCity();
                         FocusScope.of(context).unfocus();
                       },
                     ),
