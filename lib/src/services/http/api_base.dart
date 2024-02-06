@@ -19,7 +19,7 @@ class ApiBaseHelper {
 
     final token = 'Bearer ${auth.token}';
 
-    const baseUrl = "https://thirsty-villani.207-246-79-65.plesk.page/api";
+    const baseUrl = "https://th";
 
     try {
       final response = await http.get(
@@ -40,7 +40,7 @@ class ApiBaseHelper {
   Future<dynamic> post(String url, Object? body, String cityUrl) async {
     final auth = AuthResponseModel.fromJson(_authCache);
     final token = 'Bearer ${auth.token}';
-    const baseUrl = "https://thirsty-villani.207-246-79-65.plesk.page/api";
+    const baseUrl = "https://t";
 
     try {
       final response = await http.post(

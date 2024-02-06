@@ -2,22 +2,12 @@ import 'dart:developer';
 
 import 'package:acad/src/app.dart';
 import 'package:acad/src/core/app_colors.dart';
-import 'package:acad/src/models/auth/auth_request_model.dart';
-import 'package:acad/src/models/city/city_model.dart';
-import 'package:acad/src/repository/auth/auth_repository.dart';
-import 'package:acad/src/repository/city/city_repository.dart';
-import 'package:acad/src/utils/hive_box.dart';
 import 'package:acad/src/widgets/snack_bar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import '../../utils/api_urls.dart';
-
-
 class LoginViewModel extends ChangeNotifier {
-  final AuthRepository _authRepository;
-  final CityReposity _cityReposity;
+  //final AuthRepository _authRepository;
 
   bool _disposed = false;
 
@@ -45,41 +35,12 @@ class LoginViewModel extends ChangeNotifier {
   String _appVersionText = '';
   String get appVersionText => _appVersionText;
 
-  String _city = '';
-  String get city => _city;
-
-  String _cityUrl = '';
-  String get cityUrl => _cityUrl;
-
-  List<String> _citys = [];
-  List<String> get citys => _citys;
-
-  List<CityModel> _cityList = [];
-  List<CityModel> get cityList => _cityList;
-
-  bool _hasErrorCity = false;
-  bool get hasErrorCity => _hasErrorCity;
-
-  LoginViewModel(
-    this._authRepository,
-    this._cityReposity,
-  ) {
+  LoginViewModel() {
     loadPage();
   }
 
   Future<void> loadPage() async {
     appVersion();
-    await getAllCities();
-  }
-
-  void changeCityUrl(String value) {
-    _cityUrl = value;
-    notifyListeners();
-  }
-
-  void changeHasErrorCity(bool value) {
-    _hasErrorCity = value;
-    notifyListeners();
   }
 
   void changeAppVersionText(String value) {
@@ -150,50 +111,20 @@ class LoginViewModel extends ChangeNotifier {
     changePasswordMessageError('Credencial invalida');
   }
 
-  void changeCity(String value) {
-    if (_city != value) {
-      _city = value;
-      for (final items in _cityList) {
-        if (items.cidade!.toLowerCase().toString() ==
-            value.toLowerCase().toString()) {
-          changeCityUrl(items.url!);
-        }
-      }
-      notifyListeners();
-    }
-  }
-
-  void changeCitysText(List<String> value) {
-    _citys = value;
-    notifyListeners();
-  }
-
-  void changeCityList(List<CityModel> value) {
-    _cityList = value;
-    notifyListeners();
-  }
-
-  void addCityText() {
-    List<String> temp = [];
-    for (final value in _cityList) {
-      temp.add(value.cidade!);
-    }
-    changeCitysText(temp);
-  }
-
-  Future<void> tryLogin(AuthRequestModel authRequest) async {
+  Future<void> tryLogin() async {
+    //era o o parametro: AuthRequestModel authRequest
     try {
-      final result =
-          await _authRepository.authenticate(authRequest, baseUrl, _cityUrl);
+      // final result =
+      //     await _authRepository.authenticate(authRequest, baseUrl, _cityUrl);
 
-      final authBox = Hive.box(hiveAuthBoxName);
-      await authBox.put(hiveAuthBoxKey, result.toJson());
-      var box = await Hive.openBox(hiveBoxCityUrl);
-      await box.put('url', _cityUrl);
+      // final authBox = Hive.box(hiveAuthBoxName);
+      // await authBox.put(hiveAuthBoxKey, result.toJson());
+      // var box = await Hive.openBox(hiveBoxCityUrl);
+      // await box.put('url', _cityUrl);
 
       Navigator.pushNamedAndRemoveUntil(
         navigationApp.currentContext!,
-        "/",
+        "/home",
         (route) => false,
       );
 
@@ -216,21 +147,18 @@ class LoginViewModel extends ChangeNotifier {
     if (controllerUser.text.isNotEmpty && controllerPassword.text.isNotEmpty) {
       changeUserHasError(false);
       changePasswordHasError(false);
-      changeHasErrorCity(false);
 
       changeBeLoading(true);
-      AuthRequestModel aux = AuthRequestModel(
-        user: controllerUser.text,
-        password: controllerPassword.text,
-      );
-      tryLogin(aux);
+      // AuthRequestModel aux = AuthRequestModel(
+      //   user: controllerUser.text,
+      //   password: controllerPassword.text,
+      // );
+      tryLogin();
     }
   }
 
   Future<void> checkUserSenha() async {
-    if (controllerUser.text.isEmpty ||
-        controllerPassword.text.isEmpty ||
-        _cityUrl.isEmpty) {
+    if (controllerUser.text.isEmpty || controllerPassword.text.isEmpty) {
       showSnackbar(
         title: 'Por favor, preencha todos os campos.',
         erro: true,
@@ -239,7 +167,6 @@ class LoginViewModel extends ChangeNotifier {
       return;
     }
 
-    //quando tiver a api fazer os erros da api
     if (controllerUser.text.isNotEmpty && controllerPassword.text.isNotEmpty) {
       await goToHome();
     } else {
@@ -255,30 +182,6 @@ class LoginViewModel extends ChangeNotifier {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
     changeAppVersionText(packageInfo.version);
-  }
-
-  Future<void> checkCity() async {
-    if (_city == '') {
-      changeHasErrorCity(true);
-    }
-  }
-
-  Future<List<CityModel>> getAllCities() async {
-    try {
-      final result = await _cityReposity.getAllCities();
-
-      changeCityList(result);
-      addCityText();
-
-      return result.toList();
-    } catch (e) {
-      showSnackbar(
-        title: 'Falha ao carregar os dados, verifique sua conexão!',
-        erro: true,
-        time: 4,
-      );
-      return [];
-    }
   }
 
   @override

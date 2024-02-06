@@ -1,6 +1,6 @@
-const baseUrl = "https://thirsty-villani.207-246-79-65.plesk.page/api";
+const baseUrl = "https://t";
 const authUrl = "auth";
-const cityUrl = 'https://sipae.com.br/api/';
+const cityUrl = 'https://aa';
 
 String getOcorrenciasUrl() => 'ocorrencias';
 
