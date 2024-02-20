@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "sipaealuno",
+            "name": "acad",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "sipaealuno (profile mode)",
+            "name": "acad (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "sipaealuno (release mode)",
+            "name": "acad (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
